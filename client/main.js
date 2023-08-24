@@ -1,10 +1,9 @@
-const { getFortune, getSuggestion } = require("../server/controller");
-
 const complimentBtn = document.getElementById("complimentButton");
 const fortuneBtn = document.getElementById("fortuneButton");
 const goalsBtn = document.getElementById("goalForm");
 const goalsText = document.getElementById("goal");
 const goalsButton = document.getElementById("goalsButton");
+const encouragementBtn = document.getElementById("encouragementButton");
 
 const getCompliment = () => {
   axios.get("http://localhost:4000/api/compliment").then((res) => {
@@ -31,7 +30,13 @@ const postGoal = () => {
   });
 };
 const getSuggestion = () => {
-  axios.get("http://loaclhost:4000/api/goalsuggestion").then((res) => {
+  axios.get("http://localhost:4000/api/goalsuggestion").then((res) => {
+    const { data } = res;
+    alert(data);
+  });
+};
+const getEncouragement = () => {
+  axios.get("http://localhost:4000/api/encouragement").then((res) => {
     const { data } = res;
     alert(data);
   });
@@ -41,3 +46,4 @@ complimentBtn.addEventListener("click", getCompliment);
 fortuneBtn.addEventListener("click", getFortune);
 goalsBtn.addEventListener("submit", postGoal);
 goalsButton.addEventListener("click", getSuggestion);
+encouragementBtn.addEventListener("click", getEncouragement);
